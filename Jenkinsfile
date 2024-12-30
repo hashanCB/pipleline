@@ -1,22 +1,21 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:18-alpine'
+            reuseNode true
+        }
+    }
 
     stages {
-        stage('Test Setup') {
+        stage('Build') {
             steps {
-                echo 'Jenkins Pipeline is running...'
-            }
-        }
-
-        stage('Run Shell Command') {
-            steps {
-                sh 'echo "This is a test pipeline!"'
-            }
-        }
-
-        stage('Complete') {
-            steps {
-                echo 'Pipeline execution completed successfully.'
+                sh '''
+                ls -la
+                node --version
+                npm --version
+                npm ci
+                npm run build
+                '''
             }
         }
     }
