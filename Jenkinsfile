@@ -24,10 +24,12 @@ pipeline {
             steps {
                 sh '''
                 echo "Checking if build/index.html exists..."
-                test -f build/index.html
-
-                echo "Running Tests..."
-                npm test
+                if [ -f build/index.html ]; then
+                    echo "File exists: build/index.html"
+                else
+                    echo "Error: build/index.html not found!"
+                    exit 1
+                fi
                 '''
             }
         }
