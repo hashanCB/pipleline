@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="2" failures="0" errors="0" time="1.244">
-  <testsuite name="Home Component" errors="0" failures="0" skipped="0" timestamp="2024-12-30T20:59:08" time="0.75" tests="2">
-    <testcase classname="Home Component renders the Next.js logo" name="Home Component renders the Next.js logo" time="0.037">
+<testsuites name="jest tests" tests="2" failures="0" errors="0" time="0.876">
+  <testsuite name="Home Component" errors="0" failures="0" skipped="0" timestamp="2024-12-30T21:08:20" time="0.424" tests="2">
+    <testcase classname="Home Component renders the Next.js logo" name="Home Component renders the Next.js logo" time="0.038">
     </testcase>
-    <testcase classname="Home Component renders the Deploy now button" name="Home Component renders the Deploy now button" time="0.01">
+    <testcase classname="Home Component renders the Deploy now button" name="Home Component renders the Deploy now button" time="0.015">
     </testcase>
   </testsuite>
 </testsuites>

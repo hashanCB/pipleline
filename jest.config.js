@@ -1,7 +1,7 @@
 module.exports = {
   testEnvironment: "jest-environment-jsdom",
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": "@swc/jest", // Use SWC for Jest transformation
+    "^.+\\.(js|jsx|ts|tsx)$": "@swc/jest",
   },
   moduleNameMapper: {
     "\\.(css|less|sass|scss)$": "identity-obj-proxy",

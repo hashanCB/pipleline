@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:18-alpine' // Use Node.js Docker image
+            image 'node:18-alpine'
             reuseNode true
         }
     }
@@ -9,35 +9,26 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                sh '''
-                echo "Installing dependencies..."
-                npm ci
-                '''
+                sh 'npm ci'
             }
         }
 
         stage('Build') {
             steps {
-                sh '''
-                echo "Building the Next.js project..."
-                npm run build
-                '''
+                sh 'npm run build'
             }
         }
 
         stage('Test') {
             steps {
-                sh '''
-                echo "Running Jest tests..."
-                npm test
-                '''
+                sh 'npm test'
             }
         }
     }
 
     post {
         always {
-            junit 'test-results/junit.xml' // Publish JUnit test results
+            junit 'test-results/junit.xml'
         }
     }
 }
