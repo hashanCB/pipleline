@@ -24,7 +24,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Checking if build/index.html exists..."
-                if [ -f build/index.html ]; then
+                if [ -f build/c.html ]; then
                     echo "File exists: build/index.html"
                 else
                     echo "Error: build/index.html not found!"
