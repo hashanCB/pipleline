@@ -1,21 +1,26 @@
 pipeline {
     agent {
         docker {
-            image 'node:18-alpine'
+            image 'node:18-alpine' // Use Node.js Docker image
             reuseNode true
         }
     }
 
     stages {
+        stage('Install Dependencies') {
+            steps {
+                sh '''
+                echo "Installing dependencies..."
+                npm ci
+                '''
+            }
+        }
+
         stage('Build') {
             steps {
                 sh '''
-                ls -la
-                node --version
-                npm --version
-                npm ci
+                echo "Building the Next.js project..."
                 npm run build
-                ls -la build
                 '''
             }
         }
@@ -23,15 +28,16 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                echo "Checking if build/index.html exists..."
-                if [ -f build/c.html ]; then
-                    echo "File exists: build/index.html"
-                else
-                    echo "Error: build/index.html not found!"
-                    exit 1
-                fi
+                echo "Running Jest tests..."
+                npm test
                 '''
             }
+        }
+    }
+
+    post {
+        always {
+            junit 'test-results/junit.xml' // Publish JUnit test results
         }
     }
 }
