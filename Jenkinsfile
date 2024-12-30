@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                ls -la build
+                ls -la
                 node --version
                 npm --version
                 npm ci
@@ -20,7 +20,14 @@ pipeline {
             }
         }
 
-
-      
+        stage('Test') {
+            steps {
+                sh '''
+                ls -la build
+                test -f build/index.html
+                npm test
+                '''
+            }
+        }
     }
 }
