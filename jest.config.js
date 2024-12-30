@@ -1,18 +1,18 @@
 module.exports = {
-  testEnvironment: "jest-environment-jsdom", // Explicitly set the jsdom test environment
+  testEnvironment: "jest-environment-jsdom",
   transform: {
-    "^.+\\.(js|jsx)$": "babel-jest", // Use babel-jest to transform JavaScript and JSX files
+    "^.+\\.(js|jsx|ts|tsx)$": "@swc/jest", // Use SWC for Jest transformation
   },
   moduleNameMapper: {
-    "\\.(css|less|sass|scss)$": "identity-obj-proxy", // Mock CSS imports
+    "\\.(css|less|sass|scss)$": "identity-obj-proxy",
   },
   reporters: [
     "default",
     [
       "jest-junit",
       {
-        outputDirectory: "test-results", // Directory for JUnit XML reports
-        outputName: "junit.xml", // Name of the JUnit XML file
+        outputDirectory: "test-results",
+        outputName: "junit.xml",
       },
     ],
   ],
