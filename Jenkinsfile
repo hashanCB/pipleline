@@ -23,7 +23,10 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
+                echo "Checking if build/index.html exists..."
                 test -f build/index.html
+
+                echo "Running Tests..."
                 npm test
                 '''
             }
