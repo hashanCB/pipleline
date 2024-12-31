@@ -32,7 +32,7 @@ pipeline {
             steps {
                 echo 'Deploying to Vercel...'
                 withCredentials([string(credentialsId: 'vercel-token', variable: 'VERCEL_TOKEN')]) {
-                    sh 'npx vercel --token $VERCEL_TOKEN --prod'
+                    sh 'npx vercel --token $VERCEL_TOKEN --prod --yes'
                 }
             }
         }
