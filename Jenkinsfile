@@ -10,21 +10,21 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing dependencies...'
-                sh 'npm ci' // Installs project dependencies
+                sh 'npm ci'
             }
         }
 
         stage('Build') {
             steps {
                 echo 'Building the Next.js project...'
-                sh 'npm run build' // Builds the Next.js project
+                sh 'npm run build'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'npm test' // Runs the test cases
+                sh 'npm test'
             }
         }
 
@@ -32,8 +32,7 @@ pipeline {
             steps {
                 echo 'Deploying to Vercel...'
                 withCredentials([string(credentialsId: 'vercel-token', variable: 'VERCEL_TOKEN')]) {
-                    sh 'npm install -g vercel' // Installs the Vercel CLI globally
-                    sh 'vercel --token $VERCEL_TOKEN --prod' // Deploys the project to Vercel
+                    sh 'npx vercel --token $VERCEL_TOKEN --prod'
                 }
             }
         }
